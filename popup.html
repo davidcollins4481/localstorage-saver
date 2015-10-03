@@ -1,13 +1,125 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+    <title>LocalStorage Saver</title>
     <link rel="stylesheet" href="bootstrap.min.css"/>
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>test</p>
+    <div class="container">
+        <div class="row controls">
+            <div class="col-lg-12">
+                <div class="btn btn-success">
+                    <a href="#">Save</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p><strong>Local Storage Used:</strong></p>
+            </div>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+            <span class="sr-only">40% Complete (success)</span>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p><strong>Session Storage Used:</strong></p>
+            </div>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+            <span class="sr-only">40% Complete (success)</span>
+          </div>
+        </div>
+
+        <!-- if results -->
+        <div class="row header">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-3">
+                <p>Label</p>
+            </div>
+            <div class="col-xs-3">
+                <p>Duplicate</p>
+            </div>
+            <div class="col-xs-3">
+                <p>Delete</p>
+            </div>
+        </div>
+
+        <div class="row item">
+            <div class="col-xs-3">
+                <a href="#">Apply</a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">ppg</a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">
+                    <i class="glyphicon glyphicon-duplicate"></i>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">
+                    <i class="glyphicon glyphicon-remove-circle"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="row item">
+            <div class="col-xs-3">
+                <a href="#">Apply</a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">ppg</a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">
+                    <i class="glyphicon glyphicon-duplicate"></i>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">
+                    <i class="glyphicon glyphicon-remove-circle"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="row item">
+            <div class="col-xs-3">
+                <a href="#">Apply</a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">ppg</a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">
+                    <i class="glyphicon glyphicon-duplicate"></i>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#">
+                    <i class="glyphicon glyphicon-remove-circle"></i>
+                </a>
+            </div>
+        </div>
+        <!-- /if results -->
+
+        <!-- else no results
+        <div class="row no-results">
+            <div class="col-lg-12">
+                <p><strong>Nothing Saved</strong></p>
+            </div>
+        </div>
+         /else no results -->
+
+    </div>
 
     <script src="popup.js"></script>
 </body>

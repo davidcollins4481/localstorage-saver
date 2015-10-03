@@ -1,7 +1,64 @@
 body {
-    width: 400px;
+    min-width: 400px;
 }
 
-a {
-    display: inline-block;
+.container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    .container p {
+        margin-bottom: 5px;
+    }
+
+.row.controls {
+    margin-bottom: 15px;
+}
+
+    .row.controls .btn {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .row.controls .btn:hover {
+        background: linear-gradient(to right, #4cae4c, #8ABF8A);
+    }
+
+        .row.controls .btn a {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+
+.progress {
+    border-radius: 0;
+    height: 10px;
+    margin-bottom: 5px;
+}
+
+.row.header {
+    margin: 15px 0 5px;
+}
+    .row.header p {
+        font-weight: bold;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+.row.item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-left: 0;
+    margin-right: 0;
+    border-top: 1px solid #ccc;
+}
+
+    .row.item .col-xs-3 {
+        text-align: center;
+    }
+
+.row.no-results {
+    text-align: center;
+    margin-top: 20px;
 }
