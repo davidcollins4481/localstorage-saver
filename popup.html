@@ -12,9 +12,12 @@
         <div class="row controls">
             <div class="col-lg-12">
                 <div class="btn btn-success">
-                    <a href="#" class="save-btn">Save</a>
+                    <a class="save-btn" ng-click="saveStorageState()">Save</a>
                 </div>
             </div>
+            <!-- <div class="col-lg-12">
+                <a ng-click="clearStorage()">clear storage</a>
+            </div> -->
         </div>
 
         <div class="row">
@@ -41,31 +44,23 @@
 
         <!-- if results -->
         <div class="row header" ng-hide="!savedStates.length">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
                 <p>Label</p>
             </div>
-            <div class="col-xs-3">
-                <p>Duplicate</p>
-            </div>
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <p>Delete</p>
             </div>
         </div>
 
         <div class="row item" ng-repeat="state in savedStates" ng-hide="!savedStates.length">
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <a href="#">Apply</a>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <a href="#">{{state.label}}</a>
             </div>
-            <div class="col-xs-3">
-                <a href="#">
-                    <i class="glyphicon glyphicon-duplicate"></i>
-                </a>
-            </div>
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <a href="#">
                     <i class="glyphicon glyphicon-remove-circle"></i>
                 </a>

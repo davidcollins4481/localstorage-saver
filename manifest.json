@@ -24,6 +24,7 @@
     ],
     "permissions": [
         "storage",
+        "unlimitedStorage",
         "tabs",
         "<all_urls>"
     ]
