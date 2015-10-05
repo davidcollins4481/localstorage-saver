@@ -58,7 +58,11 @@
                 <a href="#">Apply</a>
             </div>
             <div class="col-xs-4">
-                <a href="#">{{state.label}}</a>
+                <a ng-click="promptRename(state.internalID)" ng-show="!state.renaming">{{state.label}}</a>
+                <input type="text"
+                    ng-model="state['edited_label']"
+                    ng-show="!!state.renaming"
+                    ng-keydown="rename(this)" >
             </div>
             <div class="col-xs-4">
                 <a ng-click="deleteState(state.internalID)">
