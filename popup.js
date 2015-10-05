@@ -8,7 +8,6 @@ angular.module('localstorageSaverApp', [])
             chrome.storage.local.get(null, function (items) {
                 allSites = items['sites'] || {};
                 var currentSite = allSites[$scope.hostname] || {};
-                console.log(currentSite);
                 var keys = Object.keys(currentSite);
                 $scope.savedStates = []; // reset
 
@@ -43,15 +42,13 @@ angular.module('localstorageSaverApp', [])
         };
 
         $scope.deleteState = function(internalID) {
-            console.log(internalID);
-
             chrome.storage.local.get(null, function (items) {
                 allSites = items['sites'] || {};
                 var currentSite = allSites[$scope.hostname] || {},
                     keys = Object.keys(currentSite);
 
                 keys.forEach(function(key) {
-                    if (key === internalID) {
+                    if (key == internalID) {
                         delete currentSite[key];
                     }
                 })
@@ -71,19 +68,18 @@ angular.module('localstorageSaverApp', [])
 
         $scope.promptRename = function() {
             this.state.renaming = true;
-            console.log(this);
         };
 
-        $scope.rename = function(state) {
+        $scope.rename = function() {
             if (event.keyCode != 13) {
                 return;
             }
 
-            this.state.renaming = false;
-            this.state.label = newLabel;
-
             var newLabel = this.state.edited_label,
                 internalID = this.state.internalID;
+
+            this.state.renaming = false;
+            this.state.label = newLabel;
 
             chrome.storage.local.get(null, function (items) {
                 allSites = items['sites'] || {};
@@ -91,7 +87,7 @@ angular.module('localstorageSaverApp', [])
                  keys = Object.keys(currentSite);
 
                 keys.forEach(function(key) {
-                    if (key === internalID) {
+                    if (key == internalID) {
                         currentSite[key].label = newLabel;
                     }
                 })
@@ -108,6 +104,36 @@ angular.module('localstorageSaverApp', [])
             });
         };
 
+        $scope.apply = function() {
+            var state = this.state;
+            chrome.storage.local.get(null, function (items) {
+                allSites = items['sites'] || {};
+                var currentSite = allSites[$scope.hostname] || {},
+                    keys = Object.keys(currentSite),
+                    toApply = undefined;
+
+                keys.forEach(function(key) {
+                    if (key == state.internalID) {
+                        toApply = currentSite[key];
+                    }
+                });
+
+                chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                    var args = {
+                        apply: true,
+                        state: {
+                            localStorage: toApply.localStorage,
+                            sessionStorage: toApply.sessionStorage
+                        }
+                    };
+
+                    chrome.tabs.sendMessage(tabs[0].id, args, function(response) {
+
+                    });
+                });
+            });
+        }
+
         $scope.saveStorageState = function() {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, {}, function(response) {
@@ -117,7 +143,8 @@ angular.module('localstorageSaverApp', [])
                         internalID = new Date().getTime();
 
                     $scope.savedStates.push({
-                        label: internalID
+                        label: internalID,
+                        internalID: internalID
                     });
 
                     $scope.$apply();

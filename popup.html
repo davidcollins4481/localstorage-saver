@@ -55,7 +55,7 @@
 
         <div class="row item" ng-repeat="state in savedStates" ng-hide="!savedStates.length">
             <div class="col-xs-4">
-                <a href="#">Apply</a>
+                <a ng-click="apply(this)">Apply</a>
             </div>
             <div class="col-xs-4">
                 <a ng-click="promptRename(state.internalID)" ng-show="!state.renaming">{{state.label}}</a>
